@@ -1,27 +1,43 @@
-# ManagingtasksFront
+# Managing Tasks Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
+This is the frontend application for managing tasks, built with Angular.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js (version 14 or higher)
+- Angular CLI
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/alexspnovaes/managingtasks-front.git
+   cd managingtasks-front
+   ```
+2. Install dependencies:
+   ```bash
+    npm install
+    ```
+3. Run the development server:
+   ```bash
+    ng serve    
+    ```
+Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-## Build
+## Configuration
+The application configuration is defined in app.config.ts. It includes providers for zone change detection, routing, client hydration, and HTTP client configuration.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Components
+AppComponent
+The root component of the application. It includes the router outlet for navigation.
 
-## Running unit tests
+DashboardComponent
+A standalone component for managing tasks. It includes functionality to load, add, update, and delete tasks.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Services
+TaskService
+A service for interacting with the backend API to manage tasks.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Models
+Task
+A model representing a task with properties such as id, title, and completed.
