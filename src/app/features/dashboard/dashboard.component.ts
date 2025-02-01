@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TaskService } from '../../core/services/task.service';
 import { Task } from '../../core/models/task.model';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, NgForm } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   standalone: true,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [CommonModule, FormsModule ]
+  imports: [CommonModule, FormsModule]
 })
 export class DashboardComponent implements OnInit {
   tasks: Task[] = [];
   newTaskTitle: string = '';
+
+  @ViewChild('taskForm') taskForm!: NgForm; 
 
   constructor(private taskService: TaskService) {}
 
@@ -36,6 +37,7 @@ export class DashboardComponent implements OnInit {
     this.taskService.addTask(newTask).subscribe((task) => {
       this.tasks.push(task);
       this.newTaskTitle = ''; 
+      this.taskForm.resetForm();
     });
   }
 

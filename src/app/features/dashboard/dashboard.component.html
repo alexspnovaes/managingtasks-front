@@ -6,7 +6,7 @@
       <h4 class="mb-0">Add New Task</h4>
     </div>
     <div class="card-body">
-      <form (submit)="addTask()">
+      <form #taskForm="ngForm" (submit)="addTask()" novalidate>
         <div class="input-group">
           <input
             type="text"
@@ -15,11 +15,16 @@
             [(ngModel)]="newTaskTitle"
             placeholder="Input task title"
             required
+            #taskInput="ngModel"
+            [ngClass]="{'is-invalid': taskInput.invalid && taskInput.touched}"
           />
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">
             <i class="bi bi-plus-circle me-1"></i> 
             Add
           </button>
+        </div>
+        <div *ngIf="taskInput.invalid && taskInput.touched" class="invalid-feedback">
+          Task title is required.
         </div>
       </form>
     </div>
